@@ -1,0 +1,11 @@
+-- Require all other config files
+require("config.monitors")
+require("config.programs")
+require("config.autostart")
+require("config.environment")
+require("config.permissions")
+require("config.looks")
+require("config.miscellaneous")
+require("config.input")
+require("config.keybinds")
+require("config.windows")
