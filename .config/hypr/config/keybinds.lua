@@ -1,21 +1,34 @@
 -- Load the commands from the program file 
-local programs    = require("config.programs")
-local terminal    = programs.terminal
-local fileManager = programs.fileManager
-local menu        = programs.menu
-
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
+------------------------------------------
+---------------- LAUNCHER ----------------
+------------------------------------------
+
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
-hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
--- local closeWindowBind = hl.bind(mainMod .. " + C", hl.dsp.window.close())
--- closeWindowBind:set_enabled(false)
+hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(TERMINAL))
+hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(MENU))
+hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(BROWSER))
+hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(FILE_MANAGER))
+hl.bind(mainMod .. " + W", hl.dsp.window.close())
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
-hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
+
+-- hl.bind("CONTROL + SHIFT + Escape", hl.dsp.exec_cmd(TERMINAL .. " -e btop"))
+-- hl.bind(mainMod .. " + SHIFT + Escape", hl.dsp.exec_cmd(TERMINAL .. " --class btop-floating -e btop"))
+
+-- Do a screenshot
+hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("grim -g \"$(slurp)\" - | wl-copy"))
+
+--Reload waybar
+hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("/home/danielmp/.config/waybar/scripts/launch.sh"))
+
+
+------------------------------------------
+----------- WINDOW MANAGEMENT ------------
+------------------------------------------
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
@@ -32,8 +45,8 @@ for i = 1, 10 do
 end
 
 -- Example special workspace (scratchpad)
-hl.bind(mainMod .. " + S",         hl.dsp.workspace.toggle_special("magic"))
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
+-- hl.bind(mainMod .. " + S",         hl.dsp.workspace.toggle_special("magic"))
+-- hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
 
 -- Scroll through existing workspaces with mainMod + scroll
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))

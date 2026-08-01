@@ -1,6 +1,6 @@
 -- Require all other config files
 require("config.monitors")
-require("config.programs")
+require("config.variables")
 require("config.autostart")
 require("config.environment")
 require("config.permissions")
