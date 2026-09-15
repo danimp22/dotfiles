@@ -6,7 +6,7 @@
 }
 
 window#waybar {
-    background-color: @bg0;
+    background-color: rgba(29, 32, 33, 0.99);
     color: @fg;
     border-radius: 0 0 10px 10px;
 }
